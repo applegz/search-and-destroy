@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
 //Complete this algo
 const isLoop = (linkedlist) => {
-  // console.log(linkedlist);
+  console.log(linkedlist);
 
   // this is to determine if we are in linkedlist OR node
   let current;
@@ -12,24 +12,14 @@ const isLoop = (linkedlist) => {
     current = linkedlist;
   }
   //--------------------
-  console.log(`current.value`, current.value);
-
-  let nextOfCurrent = current.next;
-  console.log(`nextOfCurrent`, nextOfCurrent);
-  let previous = current.next.previous;
-  console.log(`previous.value`, previous.value);
-  console.log(`nextOfCurrent.value`, nextOfCurrent.value);
-  // console.log(previous.value === next.value);
-  console.log(`previous`, previous);
-
+  let next = current.next;
   if (!next) {
     return false;
   }
-  if (next.value !== previous.value) {
+  if (!current.next.previous || current.next.previous.value !== current.value) {
     return true;
   }
-  console.log(`we are in the loop now.`);
-  isLoop(next);
+  return isLoop(next);
 };
 
 /*
